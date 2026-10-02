@@ -1,11 +1,14 @@
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        remember = {}
+        num_map = {}
 
-        for i in range(len(nums)):
-            needed = target - nums[i]
+        for i, num in enumerate(nums):
+            complement = target - num
 
-            if needed in remember:
-                return [remember[needed], i]
+            # If the complement exists in our map we found the pair
+            if complement in num_map:
+                return [num_map[complement], i]
 
-            remember[nums[i]] = i
+            num_map[num] = i
+
+        return []
